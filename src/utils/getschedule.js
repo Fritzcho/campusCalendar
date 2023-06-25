@@ -1,4 +1,7 @@
+import exportSchema from "./schemaExport";
+
 function getschedule(link){
+  
     var events = {}
     var request = new XMLHttpRequest();
     request.open(
@@ -30,10 +33,11 @@ function getschedule(link){
             
           }
           
+          exportSchema(events)
         }
       }
     };
-    return events
+    
 
 }
 
