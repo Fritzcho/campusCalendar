@@ -1,8 +1,8 @@
 import exportSchema from "./schemaExport";
 
-function getschedule(link){
+function getschedule(link, setEvents){
   
-    var events = {}
+    var events = []
     var request = new XMLHttpRequest();
     request.open(
       "GET",
@@ -21,7 +21,9 @@ function getschedule(link){
           for (i = 0; i < lines.length; i++) {
             if (lines[i].includes('DTSTART')) {
               var date = lines[i].split(":");
-              events[events_i] = {date: date[1]};
+
+              events[events_i] = [events_i]
+              events[events_i]["date"] = date[1];
             }
             else if (lines[i].includes('SUMMARY')) {
               var title = lines[i].split(":");
@@ -33,7 +35,7 @@ function getschedule(link){
             
           }
           
-          exportSchema(events)
+          exportSchema(events, setEvents)
         }
       }
     };
