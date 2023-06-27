@@ -12,7 +12,7 @@ const Schema = ({}) => {
         scheduleEvents[i] = sessionStorage.getItem("Date" + iPlus)
         iPlus++    
     }
-    console.log(scheduleEvents)
+   
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView}>

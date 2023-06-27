@@ -4,6 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import Schema from './schema';
 import getschedule from '../utils/getschedule';
 import keyFetch from '../utils/keyFetch';
+import { useEffect, useState } from 'react';
+
 var tider = "1100"
 
 
@@ -15,9 +17,29 @@ const Hem = ({}) => {
     //var link = "https://cloud.timeedit.net/umu/web/public1/ri6w6X3033ZZY1Qv01030311y0YX0579X71QX12Q9Y737X35X8373b8Z30Q2eXuQ06Zn76701.ics"
     //getschedule(FetchKey)
     // could use if (key != undefined){} to prevent code running, lear more of abortController 
+    const [value, setValue] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        keyFetch((retrievedValue) => {
+          setValue(retrievedValue);
+          setIsLoading(false);
+        });
+      };
+  
+      fetchData();
+    }, []);
+  
+     // Access the value here
+  
+    if (isLoading) {
+      return 
+    }
+    
 
-    getschedule("https://cloud.timeedit.net/umu/web/public1/ri6w6X3033ZZY1Qv01030311y0YX0579X71QX12Q9Y737X35X8373b8Z30Q2eXuQ06Zn76701.ics")
-
+    getschedule(value)
+ 
     return (
         <Stack.Navigator>
             <Stack.Screen name = "hemma" component = {Homecomp} options={({ route }) => ({

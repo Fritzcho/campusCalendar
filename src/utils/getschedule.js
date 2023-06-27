@@ -5,13 +5,18 @@ function getschedule(link, setEvents){
   
     var events = []
     var request = new XMLHttpRequest();
+
+
+    
     request.open(
       "GET",
       link,
       true
     );
+    
     request.send(null);
     request.onreadystatechange = function() {
+
       if (request.readyState === 4 && request.status === 200) {
         var type = request.getResponseHeader("Content-Type");
         if (type.indexOf("text") !== 1) {
@@ -38,7 +43,7 @@ function getschedule(link, setEvents){
           
           sessionStore(events)
         }
-      }
+      } 
     };
     
 

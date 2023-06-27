@@ -1,5 +1,10 @@
-const Bokningar = ({}) => {
-   
-}
+// Bokningar.jsx
 
-export default Bokningar
+
+const Bokningar = () => {
+
+
+
+};
+
+export default Bokningar;

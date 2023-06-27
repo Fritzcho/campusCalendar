@@ -49,12 +49,12 @@ const Settings = ({}) => {
     <View style={{padding: 10}}>
       <TextInput
         style={{height: 40}}
-        placeholder="Type here to translate!"
+        placeholder="Input calendar .ICS link here"
         onChangeText={newText => setText(newText)}
         defaultValue={text}
       />
       <TouchableOpacity style={styles.button} onPress={onPress}>
-        <Text>Press Here</Text>
+        <Text>Save</Text>
       </TouchableOpacity>
     </View>
   );

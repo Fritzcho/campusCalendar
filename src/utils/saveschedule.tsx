@@ -4,7 +4,7 @@ function saveSchedule(link) {
 
   const storeData = async () => {
       try {
-        await AsyncStorage.setItem('scheduleKey', JSON.stringify(link));
+        await AsyncStorage.setItem('scheduleKey', link);
       } catch (e) {
         console.log("storing failed")
       }
