@@ -10,9 +10,11 @@ const Schema = () => {
     iPlus++;
   }
 
-  // Extract the day and month from the date string
+  // Extract the day, month, hours, and minutes from the date string
   const getDay = (date) => parseInt(date.substr(6, 2));
   const getMonth = (date) => parseInt(date.substr(4, 2));
+  const getHours = (date) => parseInt(date.substr(9, 2));
+  const getMinutes = (date) => parseInt(date.substr(11, 2));
 
   // Create an object to store events for each day
   const eventsByDay = {};
@@ -24,6 +26,8 @@ const Schema = () => {
 
     const day = getDay(date);
     const month = getMonth(date);
+    const hours = getHours(event);
+    const minutes = getMinutes(event);
 
     if (!eventsByDay[month]) {
       eventsByDay[month] = {};
@@ -33,7 +37,7 @@ const Schema = () => {
       eventsByDay[month][day] = [];
     }
 
-    eventsByDay[month][day].push(eventType);
+    eventsByDay[month][day].push({ eventType, hours, minutes });
   });
 
   // Get the number of days in a month
@@ -76,8 +80,10 @@ const Schema = () => {
                       <Text style={styles.dayText}>{day}</Text>
                       {events && (
                         <View style={styles.eventContainer}>
-                          {events.map((eventType, index) => (
-                            <Text key={index} style={styles.eventText}>{eventType}</Text>
+                          {events.map((event, index) => (
+                            <Text key={index} style={styles.eventText}>
+                              {`${event.eventType} (${event.hours}:${event.minutes})`}
+                            </Text>
                           ))}
                         </View>
                       )}
