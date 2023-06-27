@@ -7,7 +7,14 @@ const Settings = ({}) => {
   const [value, setValue] = useState(null);
   const [text, setText] = useState('');
   const onPress = () => {
-    saveSchedule(text)
+    if (text.indexOf(".ics") > 0 && text.indexOf("https://") === 0 ){
+      saveSchedule(text)
+      alert("Schedule Link Added")
+      
+    } else  {
+      alert("Invalid Schedule Link")
+    }
+    
   }
 
   function testFetch() {

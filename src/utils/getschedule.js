@@ -1,4 +1,5 @@
 import exportSchema from "./schemaExport";
+import sessionStore from "./sessionStorage";
 
 function getschedule(link, setEvents){
   
@@ -34,7 +35,7 @@ function getschedule(link, setEvents){
             }
             
           }
-          
+          sessionStore(events)
           exportSchema(events, setEvents)
         }
       }
