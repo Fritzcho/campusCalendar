@@ -2,20 +2,30 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, View, TouchableOpacity} from 'react-native';
 import saveSchedule from '../utils/saveschedule';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import getschedule from '../utils/getschedule';
+import keyFetch from '../utils/keyFetch';
+
+
+
 
 const Settings = ({}) => {
   const [value, setValue] = useState(null);
   const [text, setText] = useState('');
+  
   const onPress = () => {
+  
     if (text.indexOf(".ics") > 0 && text.indexOf("https://") === 0 ){
       saveSchedule(text)
+      getschedule(text)
       alert("Schedule Link Added")
-      
     } else  {
       alert("Invalid Schedule Link")
     }
     
+    
   }
+
+
 
   function testFetch() {
     const getKey = async () => {

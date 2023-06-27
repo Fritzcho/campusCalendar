@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useState, useEffect,  } from "react";
+var fetched = false
 
 function keyFetch() {
     const [value, setValue] = useState(null);
@@ -12,14 +13,19 @@ function keyFetch() {
       }
       return key;
     };
-  
-    getKey().then(data => {
     
+    getKey().then(data => {
+      
       setValue(data)
 
     })
-
-    return value
+    
+    // Prevents null value from being returned, still need to add abortcontroller to abort request when the call is finished
+    if (value != undefined && !fetched) {
+      fetched = true
+      return value
+    }
+    
 
     
   }

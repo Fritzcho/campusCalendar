@@ -1,8 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
-
-
 function saveSchedule(link) {
 
   const storeData = async () => {

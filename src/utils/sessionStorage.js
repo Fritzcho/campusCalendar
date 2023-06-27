@@ -5,8 +5,6 @@ function sessionStore(schedule){
     
     for (i = 0; i < schedule.length; i++) {
             sessionStorage.setItem("Date"+ dateNumb++, schedule[i].date + " " + schedule[i].title)
-            
-        
     } 
 
 }
